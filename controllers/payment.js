@@ -1,4 +1,4 @@
-import User from "../modals/Auth.js";
+import User from "../models/Auth.js";
 import { sendInvoiceEmail } from "../utils/sendMail.js";
 
 export const activatePremium =

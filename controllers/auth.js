@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import users from "../Modals/Auth.js";
+import users from "../models/Auth.js";
 import crypto from "crypto";
 import { sendOtpEmail } from "../utils/sendOtpEmail.js";
 import { sendSMS } from "../utils/smsService.js";

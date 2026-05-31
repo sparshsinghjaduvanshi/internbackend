@@ -1,5 +1,5 @@
-import User from "../modals/Auth.js";
-import Video from "../modals/video.js";
+import User from "../models/Auth.js";
+import Video from "../models/video.js";
 
 export const downloadVideo = async (req, res) => {
 
