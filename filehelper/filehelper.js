@@ -2,25 +2,9 @@
 
 import multer from "multer";
 
-const storage = multer.diskStorage({
+const storage = multer.memoryStorage();
 
-  destination: (req, res, cb) => {
-    cb(null, "uploads");
-  },
-
-  filename: (req, file, cb) => {
-    cb(
-      null,
-      new Date()
-        .toISOString()
-        .replace(/:/g, "-")
-      + "-" +
-      file.originalname
-    );
-  },
-});
-
-const filefilter = ( req, file, cb) => {
+const filefilter = (req, file, cb) => {
 
   const allowedTypes = [
     "video/mp4",
@@ -38,14 +22,19 @@ const filefilter = ( req, file, cb) => {
   ) {
     cb(null, true);
   } else {
-    cb(null, false);
+    cb(
+      new Error(
+        "Only MP4, MKV, AVI, MOV and WEBM videos are allowed"
+      ),
+      false
+    );
   }
 };
 
 const upload = multer({
   storage: storage,
   fileFilter: filefilter,
-  limits: { fileSize: 5 * 1024 * 1024 * 1024, },
+  limits: { fileSize: 100 * 1024 * 1024 }, // 100MB
 });
 
 export default upload;

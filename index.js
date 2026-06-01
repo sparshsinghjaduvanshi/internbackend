@@ -136,7 +136,7 @@ app.use(
   })
 );
 
-app.use("/uploads", express.static(path.join("uploads")));
+// app.use("/uploads", express.static(path.join("uploads")));
 
 app.get("/", (req, res) => {
   res.send("You tube backend is working");
