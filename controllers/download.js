@@ -4,8 +4,8 @@ import connectDB from "../utils/connectDB.js";
 
 
 export const downloadVideo = async (req, res) => {
-  await connectDB();
-  try {
+    await connectDB();
+    try {
 
         const { userId } = req.body;
 
@@ -63,13 +63,11 @@ export const downloadVideo = async (req, res) => {
         });
 
         await user.save();
-
         return res.status(200).json({
             success: true,
             message: "Download allowed",
-            videoUrl: video.videoLink,
+            videoUrl: video.videoUrl,
         });
-
     } catch (error) {
 
         console.error(error);
