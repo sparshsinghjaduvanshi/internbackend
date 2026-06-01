@@ -1,4 +1,5 @@
 import video from "../models/video.js";
+import connectDB from "../utils/connectDB.js";
 
 export const uploadvideo = async (req, res) => {
   if (req.file === undefined) {
@@ -24,12 +25,22 @@ export const uploadvideo = async (req, res) => {
     }
   }
 };
+// export const getallvideo = async (req, res) => {
+//   try {
+//     const files = await video.find();
+//     return res.status(200).send(files);
+//   } catch (error) {
+//     console.error(" error:", error);
+//     return res.status(500).json({ message: "Something went wrong" });
+//   }
+// };
+
 export const getallvideo = async (req, res) => {
+  await connectDB(); // ← add this line
   try {
     const files = await video.find();
     return res.status(200).send(files);
   } catch (error) {
-    console.error(" error:", error);
     return res.status(500).json({ message: "Something went wrong" });
   }
 };
