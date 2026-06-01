@@ -2,8 +2,8 @@ import User from "../models/Auth.js";
 import video from "../models/video.js";
 
 export const getDownloadedVideos = async (req, res) => {
-
-    try {
+  await connectDB();
+  try {
 
       const { userId } = req.params;
 

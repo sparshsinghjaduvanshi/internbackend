@@ -4,6 +4,7 @@ import translate from "translate-google";
 
 
 export const postcomment = async (req, res) => {
+  await connectDB();
   const { commentbody } = req.body;
 
   const validCommentRegex =
@@ -39,6 +40,7 @@ export const postcomment = async (req, res) => {
 };
 
 export const getallcomment = async (req, res) => {
+  await connectDB();
   const { videoid } = req.params;
   try {
     const commentvideo = await comment.find({ videoid: videoid });
@@ -49,6 +51,7 @@ export const getallcomment = async (req, res) => {
   }
 };
 export const deletecomment = async (req, res) => {
+  await connectDB();
   const { id: _id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send("comment unavailable");
@@ -63,6 +66,7 @@ export const deletecomment = async (req, res) => {
 };
 
 export const editcomment = async (req, res) => {
+  await connectDB();
   const { id: _id } = req.params;
   const { commentbody } = req.body;
   if (!mongoose.Types.ObjectId.isValid(_id)) {
@@ -80,6 +84,7 @@ export const editcomment = async (req, res) => {
 };
 
 export const likeComment = async (req, res) => {
+  await connectDB();
   try {
 
     const commentDoc =
@@ -131,7 +136,7 @@ export const likeComment = async (req, res) => {
 };
 
 export const dislikeComment = async (req, res) => {
-
+await connectDB();
   try {
 
     const commentDoc =
@@ -197,6 +202,7 @@ export const dislikeComment = async (req, res) => {
 };
 
 export const translateComment = async (req, res) => {
+  await connectDB();
   try {
 
     const { text, targetLanguage } = req.body;

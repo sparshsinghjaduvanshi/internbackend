@@ -7,6 +7,7 @@ import { sendSMS } from "../utils/smsService.js";
 
 export const login = async (req, res) => {
   const { email, name, image } = req.body;
+  await connectDB();
 
   try {
     const existingUser = await users.findOne({ email });
@@ -24,6 +25,7 @@ export const login = async (req, res) => {
 };
 
 export const updateprofile = async (req, res) => {
+  await connectDB();
   const { id: _id } = req.params;
   const { channelname, description, phone, state, city } = req.body;
   if (!mongoose.Types.ObjectId.isValid(_id)) {
@@ -51,6 +53,7 @@ export const updateprofile = async (req, res) => {
 };
 
 export const sendOtp = async (req, res) => {
+  await connectDB();
   try {
     const { userId } = req.body;
     const user = await users.findById(userId);
@@ -128,6 +131,7 @@ export const sendOtp = async (req, res) => {
 };
 
 export const verifyOtp = async (req, res) => {
+  await connectDB();
 
   try {
 

@@ -3,6 +3,7 @@ import watchlater from "../models/watchlater.js";
 export const handlewatchlater = async (req, res) => {
   const { userId } = req.body;
   const { videoId } = req.params;
+  await connectDB();
   try {
     const exisitingwatchlater = await watchlater.findOne({
       viewer: userId,
@@ -23,6 +24,7 @@ export const handlewatchlater = async (req, res) => {
 
 export const getallwatchlater = async (req, res) => {
   const { userId } = req.params;
+  await connectDB();
   try {
     const watchlatervideo = await watchlater
       .find({ viewer: userId })

@@ -3,7 +3,7 @@ import { sendInvoiceEmail } from "../utils/sendMail.js";
 
 export const activatePremium =
   async (req, res) => {
-
+    await connectDB();
     try {
       const { userId, plan } = req.body;
       const user = await User.findById(userId);

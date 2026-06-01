@@ -2,6 +2,7 @@ import video from "../models/video.js";
 import connectDB from "../utils/connectDB.js";
 
 export const uploadvideo = async (req, res) => {
+  await connectDB();
   if (req.file === undefined) {
     return res
       .status(400)

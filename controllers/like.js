@@ -4,6 +4,7 @@ import like from "../models/like.js";
 export const handlelike = async (req, res) => {
   const { userId } = req.body;
   const { videoId } = req.params;
+  await connectDB();
   try {
     const exisitinglike = await like.findOne({
       viewer: userId,
@@ -26,6 +27,7 @@ export const handlelike = async (req, res) => {
 
 export const getallLikedVideo = async (req, res) => {
   const { userId } = req.params;
+  await connectDB();
   try {
     const likevideo = await like
       .find({ viewer: userId })

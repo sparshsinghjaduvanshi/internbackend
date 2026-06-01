@@ -4,6 +4,7 @@ import history from "../models/history.js";
 export const handlehistory = async (req, res) => {
   const { userId } = req.body;
   const { videoId } = req.params;
+  await connectDB();
   try {
     await history.create({ viewer: userId, videoid: videoId });
     await video.findByIdAndUpdate(videoId, { $inc: { views: 1 } });
@@ -14,6 +15,7 @@ export const handlehistory = async (req, res) => {
   }
 };
 export const handleview = async (req, res) => {
+  await connectDB();
   const { videoId } = req.params;
   try {
     await video.findByIdAndUpdate(videoId, { $inc: { views: 1 } });
@@ -24,6 +26,7 @@ export const handleview = async (req, res) => {
 };
 export const getallhistoryVideo = async (req, res) => {
   const { userId } = req.params;
+  await connectDB();
   try {
     const historyvideo = await history
       .find({ viewer: userId })
