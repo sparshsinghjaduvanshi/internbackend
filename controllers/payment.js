@@ -1,5 +1,7 @@
 import User from "../models/Auth.js";
 import { sendInvoiceEmail } from "../utils/sendMail.js";
+import connectDB from "../utils/connectDB.js";
+
 
 export const activatePremium =
   async (req, res) => {

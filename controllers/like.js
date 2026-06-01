@@ -1,5 +1,7 @@
 import video from "../models/video.js";
 import like from "../models/like.js";
+import connectDB from "../utils/connectDB.js";
+
 
 export const handlelike = async (req, res) => {
   const { userId } = req.body;

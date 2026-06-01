@@ -1,5 +1,7 @@
 import video from "../models/video.js";
 import history from "../models/history.js";
+import connectDB from "../utils/connectDB.js";
+
 
 export const handlehistory = async (req, res) => {
   const { userId } = req.body;

@@ -3,6 +3,8 @@ import users from "../models/Auth.js";
 import crypto from "crypto";
 import { sendOtpEmail } from "../utils/sendOtpEmail.js";
 import { sendSMS } from "../utils/smsService.js";
+import connectDB from "../utils/connectDB.js";
+
 
 
 export const login = async (req, res) => {

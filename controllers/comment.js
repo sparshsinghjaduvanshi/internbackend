@@ -1,6 +1,8 @@
 import comment from "../models/comment.js";
 import mongoose from "mongoose";
 import translate from "translate-google";
+import connectDB from "../utils/connectDB.js";
+
 
 
 export const postcomment = async (req, res) => {
