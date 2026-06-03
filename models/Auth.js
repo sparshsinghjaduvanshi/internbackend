@@ -84,6 +84,12 @@ const userschema = mongoose.Schema({
       },
     },
   ],
+  friends: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+],
 });
 
 export default mongoose.models.User ||
